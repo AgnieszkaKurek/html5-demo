@@ -1,23 +1,28 @@
 ﻿body
-input:valid + .invalid /*Adjaccent sibling selector*/
-{
-    visibility; hidden;
+
+
+ input:valid {
+ background: #fff;
 }
 
-input:valid{
-    border:2px solid #ccc;
+input:invalid {
+background: #fcc;
+ color: #333;
 }
 
-input:invalid + .invalid{
-    visibility:visible;
-}
-input:required {
-    border:2px solid #900;
+.validation-messages {
+margin-bottom:15px;
 }
 
-.invalid {
-    margin-top:0px;
-    margin-bottom:4px;
-    font-size:0.8px;
-    color:#666;
+.validation-messages span {
+font-size:0.8em;
+background-color:#eee;
+padding:6px;
+border:1px solid #ccc;
+border-radius:10px;
+color:#666;
+}
+
+.hide {
+display:none;
 }
