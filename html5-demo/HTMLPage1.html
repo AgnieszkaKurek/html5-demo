@@ -82,11 +82,26 @@
                value="09:30:00" />
 
 
+        <label for="birthMonth">Birth Month</label>
+        <input type="month"
+               id="birthMonth" name="birthMonth"
+               value="1986-04" />
 
-
-
+    <label for="vacationWeek">Vacation Week</label>
+        <input type="week"
+               id="vacationWeek" name="vacationWeek"
+               value="2016-W26" />
 
     </form>
+
+    <script data-step="1" data-label="New Markup">
+        var step1 = function () {
+            //---
+            $('#devExperienceRange').on('change', function () {
+                $('#rangeValute').text(this.value);
+            })
+        }
+    </script>
 
 </body>
 </html>
