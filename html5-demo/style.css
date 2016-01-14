@@ -1,0 +1,23 @@
+﻿body
+input:valid + .invalid /*Adjaccent sibling selector*/
+{
+    visibility; hidden;
+}
+
+input:valid{
+    border:2px solid #ccc;
+}
+
+input:invalid + .invalid{
+    visibility:visible;
+}
+input:required {
+    border:2px solid #900;
+}
+
+.invalid {
+    margin-top:0px;
+    margin-bottom:4px;
+    font-size:0.8px;
+    color:#666;
+}
