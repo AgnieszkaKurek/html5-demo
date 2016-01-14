@@ -26,6 +26,7 @@
         <input type="email"
                id="email" name="email"
                readonly />
+       
 
         <label for="url">Url:</label>
         <input type="url"
@@ -45,6 +46,24 @@
                id="devExperienceRange" name="devExperienceRange"
                min="0" max="100" step="1" value="50" />
         <span id="rangeValue">50</span>
+
+        <br />
+        <br />
+        <label for="tShirtColor">T-shirt Color</label>
+        <input type="text"
+               id="tShirtColor" name="tShirtColor"
+               list="colors" />
+        <datalist id="colors">
+            <option value="Blue"></option>
+            <option value="Red"></option>
+            <option value="Green"></option>
+        </datalist>
+        <br />
+        <br />
+        <label for="bgcolor">Bacgraund Color</label>
+        <input type="color"
+               id="bgcolor" name="bgcolor"
+               value="rgb(128,0,0)" />
 
 
     </form>
