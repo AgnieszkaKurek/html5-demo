@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B28E7B4C-C1E4-473B-B22B-1494C680A0EA}"
+	ProjectSection(SolutionItems) = preProject
+		media\big_buck_bunny.mp4 = media\big_buck_bunny.mp4
+		..\big_buck_bunny.ogv = ..\big_buck_bunny.ogv
+		..\big_buck_bunny.webm = ..\big_buck_bunny.webm
+		..\HTMLPage1.html = ..\HTMLPage1.html
+		..\PolymorphicPodcast-clip.mp3 = ..\PolymorphicPodcast-clip.mp3
+		..\PolymorphicPodcast-clip.ogg = ..\PolymorphicPodcast-clip.ogg
+		..\PolymorphicPodcast-clip.wav = ..\PolymorphicPodcast-clip.wav
+		style.css = style.css
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
