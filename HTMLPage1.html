@@ -5,41 +5,17 @@
     <meta charset="utf-8" />
     <title>notitle</title>
  <link rel="stylesheet" href="style.css" type="text/css" />
-    <script src="js.js"></script>
-
-  
-   
+    
 </head>
 <body>
    <article>
        <h1>Canvas<span>-basic shapes</span></h1>
    </article>
-    <div id="result-stub" class="well hidden">
+    <div id="result-stub" class="well">
         <canvas id="canvas" width="345" heigt="375">
             <p>Your browser does not support the canvas element.</p>
         </canvas>
     </div>
-    <script data-step="1" data -label="Basic Shapes">
-        var step1 = function () {
-            //---
-            var
-     canvas = document.getElementById('canvas'),
-     context = null;
-
-            if (canvas && canvas.getContext) {
-
-                context = canvas.getContext('2d');
-                context.beginPath();
-                context.moveTo(75, 50);
-                context.lineTo(75, 100);
-                context.lineTo(25, 100);
-                context.fill();
-            }
-            //---
-        }
-    </script>
-
-    
-
+    <script src="js.js"></script>
 </body>
 </html> 
