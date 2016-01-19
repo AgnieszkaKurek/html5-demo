@@ -7,7 +7,7 @@ if (Modernizr.canvas) {
     context = canvas.getContext('2d');
 
     
-    context.translate(100, 100);
+    context.translate(0, 0);
    
 
     var
