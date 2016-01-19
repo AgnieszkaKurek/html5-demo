@@ -2,6 +2,7 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="icon" type="image/png" href="/src/favicon.png">
     <meta charset="utf-8" />
     <title>no title3</title>
     <link rel="stylesheet" href="style.css" type="text/css" />
@@ -13,31 +14,43 @@
     </article>
     <div id="result-stub" class="well hidden">
         <canvas id="canvas" width="345" height="345">
-            <script data-step="1" data-label="Scaling">
-            var step1 = function() {
-                //---
-                var
-                    canvas = document.getElementById("canvas"),
-                    context = null;
 
-                if (Modernizr.canvas) {
+           <script data-step="1" data-label="Scaling" >
+               var step1 = function() {
 
-                    context = canvas.getContext("2d");
+                   var
+                       canvas = document.getElementById("canvas"),
+                       context = null;
 
-                    var img = new Image();
-                    img.onload = function() {
-                        context.drawImage(img, 0, 0);
-                    }
-                    
+                   if (Modernizr.canvas) {
+
+                       context = canvas.getContext("2d");
+
+                       var img = new Image();
+                       img.onload = function() {
+                           context.drawImage(img, 0, 0);
+                       }
+                       img.src = "D:\IT\html5-demo\fist-pump-baby.jpg";
 
 
-                    
-               
-            }
-            </script>
-            
+                       context.scale(.25,.5);
+                   }
+
+
+
+           </script>
+
+
+
+
         </canvas>
     </div>
-    sr
+
 </body>
 </html>
+
+
+
+
+
+
