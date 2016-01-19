@@ -1,32 +1,31 @@
 
 var
-                    x = 0,
-                    y = 0,
-                    frame,
                     canvas = document.getElementById('canvas'),
-                    context = canvas.getContext('2d');
-
-var draw = function () {
-
-    if (x <= canvas.width) {
-        context.clearRect(0, 0, 345, 345);
-        context.strokeStyle = 'rgb(139, 0, 0)';
-        context.lineWidth = 8;
-        context.beginPath();
-        context.moveTo(0, 0);
-        context.lineTo(x += 10, y += 10);
-        context.stroke();
-    }
-    else {
-        clearInterval(frame);
-        logBold('Animation Complete');
-    }
-}
+                    context = null;
 
 if (Modernizr.canvas) {
-    frame = setInterval(function () {
-        draw();
-    }, 25);
+
+    context = canvas.getContext('2d');
+
+    context.beginPath();
+    context.arc(
+        135,
+        120,
+        120,
+        0,
+        Math.PI * 2,
+        true);
+    context.clip();
+
+    var img = new Image();
+    img.onload = function () {
+        context.drawImage(img, 0, 0);
+
+        context.lineWidth = 15;
+        context.strokeStyle = '#cccccc';
+        context.stroke();
+    }
+    img.src = 'baby.jpg';
 }
 
    
