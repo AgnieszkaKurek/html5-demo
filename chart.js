@@ -53,5 +53,5 @@ if (Modernizr.canvas) {
 }
 
 
-    img.src = 'chart.png';
+    
 
