@@ -19,6 +19,10 @@ if (Modernizr.canvas) {
         context.lineWidth = 15;
         context.strokeStyle = '#cccccc';
         context.strokeRect(x, y, width, height);
+
+        context.fillStyle =
+            'rgba(153, 153, 153, 0,75)';
+        context.fillRect(0, 0, 100, 100);
     }
 
     img.src = 'baby.jpg';
