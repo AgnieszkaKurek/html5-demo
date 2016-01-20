@@ -1,33 +1,41 @@
+
+   
 var
-                   canvas = document.getElementById('canvas'),
-                   context = null,
-                   x = 40,
-                   y = 25,
-                   width = height = 200;
+                    canvas = document.getElementById('canvas'),
+                    width = canvas.width,
+                    height = canvas.height,
+                    context = null;
 
 if (Modernizr.canvas) {
 
     context = canvas.getContext('2d');
 
+    context.fillStyle =
+        'rgba(153, 153, 153, 0.75)';
+
+    context.strokeStyle = '#999999';
+    context.lineWidth = 5;
+    context.lineCap = 'round';
+
+    context.save();
+
     context.beginPath();
-    context.rect(x, y, width, height);
-    //context.clip();
+    context.moveTo(105, 105);
+    context.lineTo(200, 100);
+    context.lineTo(250, 300);
+    context.lineTo(300, 0);
+    context.closePath();
+    context.stroke();
+    context.clip();
 
-    var img = new Image();
-    img.onload = function () {
-        context.drawImage(img, 0, 0);
-        context.lineWidth = 15;
-        context.strokeStyle = '#cccccc';
-        context.strokeRect(x, y, width, height);
+    context.fillRect(0, 0, 215, 215);
 
-        context.fillStyle =
-            'rgba(153, 153, 153, 0,75)';
-        context.fillRect(0, 0, 100, 100);
-    }
+    
 
-    img.src = 'baby.jpg';
+    context.restore();
+
+    context.fillRect(200, 200, 50, 50);
 }
-
    
    
 
