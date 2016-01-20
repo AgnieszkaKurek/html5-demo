@@ -11,7 +11,7 @@ if (Modernizr.canvas) {
 
     context.beginPath();
     context.rect(x, y, width, height);
-    context.clip();
+    //context.clip();
 
     var img = new Image();
     img.onload = function () {
