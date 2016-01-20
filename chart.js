@@ -22,5 +22,5 @@ if (Modernizr.canvas) {
 
         context.stroke();
     }
-    img.src = 'chart-background.pmg';
+    img.src = 'chart.png';
 }
