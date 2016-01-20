@@ -2,6 +2,22 @@
  background-color:#0ff;
    
 }
+ #thumbs {
+                margin-top:15px;
+                width: 80%;
+                height: 300px;
+                border: 1px solid #ccc;
+                background-color: #ddd;
+                overflow:auto;
+ }
+ #thumbs img {
+                padding: 4px;
+ }
+
+ #vid, #thumbs {
+                width: 320px;
+                height: 180px;
+ }
 
 
 
