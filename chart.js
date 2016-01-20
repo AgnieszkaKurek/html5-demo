@@ -1,26 +1,57 @@
-var
-                    canvas = document.getElementById('canvas'),
-                    context = null;
+var chartData = [
+                    { month:  70, perf: 125 },
+                    { month: 105, perf: 280 },
+                    { month: 140, perf: 115 },
+                    { month: 175, perf:  45 },
+                    { month: 210, perf: 200 },
+                    { month: 245, perf: 245 },
+                    { month: 280, perf: 177 }],
+
+                    canvas,
+                    context,
+                    index = 0,
+
+                    drawSegment = function() {
+                        var x1, y1, x2, y2;
+
+                        x1 = chartData[index].month;
+                        y1 = chartData[index].perf;
+
+                        x2 = chartData[index + 1].month;
+                        y2 = chartData[index + 1].perf;
+
+                        context.beginPath();
+                        context.moveTo(x1, y1);
+                        context.lineTo(x2, y2);
+                        context.stroke();
+                        index++;
+                    };
 
 if (Modernizr.canvas) {
 
+    canvas = document.getElementById('canvas');
     context = canvas.getContext('2d');
 
-    var img = new Image();
-    img.onload = function () {
-
-        context.drawImage(img, 0, 0);
-
-        context.beginPath();
-        context.moveTo(70, 105);
-        context.lineTo(105, 132);
-        context.lineTo(142, 250);
-        context.lineTo(176, 175);
-        context.lineTo(212, 145);
-        context.lineTo(245, 197);
-        context.lineTo(280, 90);
-
-        context.stroke();
+    var bkgImg = new Image();
+    bkgImg.onload = function() {
+        context.drawImage(bkgImg, 0, 0);
+        drawSegment();
     }
-    img.src = 'chart.png';
+    bkgImg.src = 'chart.pgn';
+
+    context.strokeStyle = 'rgb(31, 172, 242)';
+    context.lineWidth = 4;
+    context.lineCap = 'round';
+
+    var frame = setInterval(function() {
+        drawSegment();
+
+        if (!(index < chartData.length - 1)) {
+            clearInterval(frame);
+        }
+    }, 750);
 }
+
+
+    img.src = 'chart.png';
+
