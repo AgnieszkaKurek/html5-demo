@@ -6,3 +6,6 @@
     background-color:#fff;
     border:1px dashed #999;
 }
+ #drag-image {
+     background: url(arrow-up.png) no-repeat -9999px -9999px;
+}
