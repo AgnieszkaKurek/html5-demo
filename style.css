@@ -2,13 +2,8 @@
  background-color:#0ff;
   
 }
-label{
-    display:inline;
-} 
-label::after{
-    content:'';
-    display:block;
-}
+
+
 div[draggable="true"]{
     cursor:move;
 }
