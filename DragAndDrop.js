@@ -1,39 +1,43 @@
 var
+                    sourceContainerId = '',
+
                     dragStart = function (e) {
 
-                        
                         try {
 
                             e.dataTransfer
-                                .setData('text/plain',
-                                    e.target.id);
+                                .setData('text/plain', e.target.id);
 
                         } catch (ex) {
 
                             e.dataTransfer
                                 .setData('Text', e.target.id);
                         }
+
+                        sourceContainerId = this.parentElement.id;
                     },
 
                     dropped = function (e) {
-                        cancel(e);
+                        if (this.id !== sourceContainerId) {
 
-                        var id;
+                            cancel(e);
 
-                        try {
+                            var id;
 
-                            id = e.dataTransfer
-                                    .getData('text/plain');
+                            try {
 
-                        } catch (ex) {
+                                id = e.dataTransfer
+                                        .getData('text/plain');
 
-                            id = e.dataTransfer
-                                    .getData('Text');
+                            } catch (ex) {
+
+                                id = e.dataTransfer
+                                        .getData('Text');
+                            }
+
+                            e.target.appendChild(
+                                document.querySelector('#' + id));
                         }
-
-
-                        e.target.appendChild(
-                            document.querySelector('#' + id));
                     },
 
                     cancel = function (e) {
@@ -46,16 +50,28 @@ var
                         }
 
                         return false;
-                    };
+                    },
 
-var img = document.querySelector('#ps-logo');
-img.addEventListener('dragstart', dragStart, false);
+                    forEach = Array.prototype.forEach;
 
 var
-    selector = '#target-container',
-    target = document.querySelector(selector);
+    selector = '[data-role="drag-drop-container"]',
+    dc = document.
+        querySelectorAll(selector);
 
-target.addEventListener('drop', dropped, false);
-target.addEventListener('dragenter', cancel, false);
-target.addEventListener('dragover', cancel, false);
+forEach.call(dc, function (c) {
+    c.addEventListener('drop', dropped, false);
+    c.addEventListener('dragenter', cancel, false);
+    c.addEventListener('dragover', cancel, false);
+});
 
+var
+    selector = '[draggable="true"]',
+    ds = document.querySelectorAll(selector);
+
+forEach.call(ds, function (source) {
+
+    source.addEventListener('dragstart',
+                            dragStart,
+                            false);
+});
