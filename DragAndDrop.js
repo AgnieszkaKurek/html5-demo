@@ -1,85 +1,58 @@
-var
-                   sourceContainerId = '',
-
-                   dragStart = function (e) {
-
-                       try {
-
-                           e.dataTransfer
-                               .setData('text/plain', e.target.id);
-
-                       } catch (ex) {
-
-                           e.dataTransfer
-                               .setData('Text', e.target.id);
-                       }
-
-                       sourceContainerId = this.parentElement.id;
-                   },
-
-                   dropped = function (e) {
-                       if (this.id !== sourceContainerId) {
-
-                           cancel(e);
-
-                           var id;
-
-                           try {
-
-                               id = e.dataTransfer
-                                       .getData('text/plain');
-
-                           } catch (ex) {
-
-                               id = e.dataTransfer
-                                       .getData('Text');
-                           }
-
-                           e.target.appendChild(
-                               document.querySelector('#' + id));
-                       }
-                   },
-
-                   cancel = function (e) {
-                       if (e.preventDefault) {
-                           e.preventDefault();
-                       }
-
-                       if (e.stopPropagation) {
-                           e.stopPropagation();
-                       }
-
-                       return false;
-                   },
-
-                   forEach = Array.prototype.forEach;
+var isDnDTypesSupported = true;
 
 var
-    selector = '[data-role="drag-drop-container"]',
-    dc = document.
-        querySelectorAll(selector);
+    dragStart = function(e) {
+        var index = $(e.target).index();
 
-forEach.call(dc, function (c) {
-    c.addEventListener('drop', dropped, false);
-    c.addEventListener('dragenter', cancel, false);
-    c.addEventListener('dragover', cancel, false);
-});
+        index += ''; // Convert to string for IE
 
-var
-    selector = '[draggable="true"]',
-    ds = document.querySelectorAll(selector);
+        try {
 
-forEach.call(ds, function (source) {
+            e.dataTransfer
+                .setData('text/plain', index);
 
-    source.addEventListener('dragstart',
-                            dragStart,
-                            false);
-});
+        } catch (ex) {
 
-var
-    sourceContainerId = '',
+            e.dataTransfer
+                .setData('Text', index);
 
-    cancel = function (e) {
+            isDnDTypesSupported = false;
+        }
+    },
+
+    dropped = function(e) {
+        cancel(e);
+
+        var oldIndex;
+
+        if(isDnDTypesSupported) {
+            oldIndex =
+              e.dataTransfer.getData('text/plain');
+        }
+        else {
+            oldIndex =
+              e.dataTransfer.getData('Text');
+        }
+
+        var
+            target = $(e.target),
+            newIndex = target.index(),
+            dropped = $(this)
+                        .parent()
+                        .children()
+                        .eq(oldIndex);
+
+        dropped.remove();
+
+        if (newIndex < oldIndex) {
+            target.before(dropped);
+        }
+        else {
+            target.after(dropped);
+        }
+    },
+
+    cancel = function(e) {
         if (e.preventDefault) {
             e.preventDefault();
         }
@@ -90,93 +63,25 @@ var
 
         return false;
     },
+                    
+    forEach = Array.prototype.forEach;
 
-    dragStart = function (e) {
+var items =
+      document.querySelectorAll('#items-list > li');
 
-        $(this).addClass('drag');
+forEach.call(items, function(item) {
 
-        var dto = e.dataTransfer;
+    $(item).prop('draggable', true);
 
-        try {
+    item.addEventListener('dragstart',
+                           dragStart, false);
 
-            dto.setData('text/plain',
-                        e.target.id);
+    item.addEventListener('drop',
+                           dropped, false);
 
-        } catch (ex) {
+    item.addEventListener('dragenter',
+                           cancel, false);
 
-            dto.setData('Text',
-                        e.target.id);
-        }
-
-        sourceContainerId = this.parentElement.id;
-    },
-
-    dropped = function (e) {
-
-        cancel(e);
-
-        var
-            id = null,
-            dto = e.dataTransfer,
-            dropped = null;
-
-        if (dto.types.length > 0) {
-            if (dto.types[0] === 'Text') {
-                id = dto.getData('Text');
-            }
-            else {
-                id = dto.getData('text/plain');
-            }
-        }
-
-        if (id !== null) {
-            dropped =
-                document.querySelector('#' + id);
-        }
-
-        if (this.id !== sourceContainerId) {
-            e.target.appendChild(dropped);
-            $(dropped).removeClass('drag');
-        }
-
-        $(this).removeClass('over');
-    },
-
-    dragOver = function (e) {
-        cancel(e);
-
-        $(this).addClass('over');
-    },
-
-    dragLeave = function (e) {
-        $(this).removeClass('over');
-    },
-
-    dragEnd = function (e) {
-        $('.drag').removeClass('drag');
-        $('.over').removeClass('over');
-    };
-
-var
-    selector = '[data-role="drag-drop-container"]',
-    containers = $(selector);
-
-containers.each(function (index, c) {
-    c.addEventListener('drop', dropped, false);
-    c.addEventListener('dragenter', cancel, false);
-    c.addEventListener('dragover', dragOver, false);
-    c.addEventListener('dragleave', dragLeave, false);
-});
-
-var
-    sources = $('[draggable="true"]');
-
-sources.each(function (index, source) {
-    source.addEventListener('dragstart',
-                             dragStart,
-                             false);
-
-    source.addEventListener('dragend',
-                             dragEnd,
-                             false);
+    item.addEventListener('dragover',
+                           cancel, false);
 });
