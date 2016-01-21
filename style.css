@@ -11,6 +11,10 @@ div[draggable="true"]{
     background-color:#fff;
     border:1px dashed #999;
 }
+ #drag-image {
+    background: url(../img/arrow-up.png) no-repeat -9999px -9999px; 
+
+ }
 
 
 
