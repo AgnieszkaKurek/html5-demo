@@ -4,7 +4,7 @@ var
     dragStart = function(e) {
         var index = $(e.target).index();
 
-        index += ''; // Convert to string for IE
+        index += ''; 
 
         try {
 
