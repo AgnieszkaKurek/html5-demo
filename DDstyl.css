@@ -1,4 +1,7 @@
-﻿[data-role="drag-drop-container"] {
+﻿body{
+    background-color:#e9f2f6
+}
+[data-role="drag-drop-container"] {
           float:left;
           width:100px;
           height:100px;
