@@ -8,19 +8,38 @@
     <script data-main="main.js" src="require-jquery"></script>
 </head>
 <body>
-    <div id="result-stub" class="well hidden">
-        <img id="drag-image" src="../img/arrow-up.png" />
-        <div id="target" class="well">
-            <h4>Drop Here</h4>
+    <div>
+        <div class="well"
+             data-dnd-role="dropzone"
+             data-dnd-dropeffect="link">
+            <h4>Drop Here: <span id="count">0</span> (effect: link)</h4>
         </div>
 
-        <div id="source" draggable="true" class="well">
-            <h4>Drag Me</h4>
+        <div class="well"
+             data-dnd-role="dropzone"
+             data-dnd-dropeffect="move">
+            <h4>Drop Here: <span id="count">0</span> (effect: move)</h4>
         </div>
+
+        <div class="well"
+             data-dnd-role="draggable"
+             data-dnd-effectallowed="copy">
+            <h4>Allowed Effect: copy</h4>
+        </div>
+
+        <div class="well"
+             data-dnd-role="draggable"
+             data-dnd-effectallowed="linkMove">
+            <h4>Allowed Effect: linkMove</h4>
+        </div>
+
     </div>
+    
+   
    
     
     <script src="DragAndDrop.js"></script>
+    <script src="jquery.js"></script>
     <script src="drag-drop.js"></script>
     
 

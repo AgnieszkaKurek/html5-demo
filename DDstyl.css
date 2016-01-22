@@ -2,10 +2,14 @@
     background-color:#e9f2f6
 }
 
-.over{
-    background-color:#fff;
-    border:1px dashed #999;
+div[draggable="true"], [data-role="draggable"] {
+    cursor: move;
 }
- #drag-image {
-     background: url(arrow-up.png) no-repeat -9999px -9999px;
+
+ .over {
+   background-color:#fff;
+   border:1px dashed #999;
 }
+ .drag{
+   opacity:0.25;
+ }
